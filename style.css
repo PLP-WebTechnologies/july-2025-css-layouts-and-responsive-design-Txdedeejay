@@ -1,0 +1,152 @@
+.flex-container {
+    display: flex;
+    background-color: lightblue;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 25vh;
+    
+}
+.flex-items {
+    background-color: lightcoral;
+    padding: 20px;
+    margin: 10px;
+    flex: 1; /* This allows the items to grow and shrink */
+    min-width: 100px; /* Minimum width for each item */
+    text-align: center;
+}
+/* Main grid layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: 220px 1fr 250px;
+    grid-template-rows: 100px 1fr 70px;
+    grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+    min-height: 100vh;
+    background: #f7f7f7;
+}
+header {
+    grid-area: header;
+    background-color: #e0e0e0;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+nav {
+    grid-area: nav;
+    background-color: #b3d8f7;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.03);
+}
+.nav-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+.nav-flex li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.nav-flex li a:hover {
+    background: #e0e0e0;
+}
+main {
+    grid-area: main;
+    background-color: #d2f5d2;
+    padding: 24px 20px;
+    min-width: 0;
+}
+.card-flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 20px;
+    flex: 1 1 220px;
+    min-width: 180px;
+    max-width: 300px;
+}
+aside {
+    grid-area: aside;
+    background: #f9e7c4;
+    padding: 24px 20px;
+    border-left: 2px solid #f3d18a;
+    min-width: 0;
+}
+footer {
+    background-color: #f7b3b3;
+    grid-area: footer;
+    padding: 18px 20px;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.03);
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 170px 1fr;
+        grid-template-areas:
+            "header header"
+            "nav main"
+            "footer footer";
+    }
+    aside {
+        display: none;
+    }
+    .card-flex {
+        flex-direction: column;
+        gap: 16px;
+    }
+    nav {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+    }
+    nav {
+        box-shadow: none;
+        padding: 0;
+    }
+    .nav-flex {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+    main {
+        padding: 16px 8px;
+    }
+    header, footer, aside {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+/* Utility: Remove old flex/grid demo classes if not used */
+.flex-container, .flex-items {
+    display: none !important;
+}
